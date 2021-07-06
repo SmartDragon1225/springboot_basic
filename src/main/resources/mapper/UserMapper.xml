@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--持久层的数据命名位置-->
+<mapper namespace="com.tian.lastspringboot.dao.UserDao">
+
+    <!--list-->
+    <select id="query" resultType="com.tian.lastspringboot.pojo.User">
+        select * from user;
+    </select>
+
+    <!--selectById-->
+    <select id="slect" resultType="User">
+        select * from user where id = #{id}
+    </select>
+
+    <!--login-->
+    <select id="login" resultType="User">
+        select * from user where id = #{id} and name = #{username}
+    </select>
+
+    <!--add-->
+    <insert id="add" parameterType="int">
+        insert into user value (#{id},#{username},#{password});
+    </insert>
+
+    <!--delete-->
+    <delete id="delete" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <!--update-->
+    <update id="update" parameterType="User">
+        update student set id=#{id},username=#{username},password=#{password}
+        where id=#{id}
+    </update>
+
+</mapper>
